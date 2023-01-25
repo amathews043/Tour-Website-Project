@@ -1,0 +1,7 @@
+/* add flexbox to .lists so that the sections will flex */
+
+.lists {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
