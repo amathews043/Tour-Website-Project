@@ -17,11 +17,38 @@
 // 8. close the </ul> at the end of the bands loop
 // 9. window.alert(`${matchingVenues}) inside the original if statement 
 
-import { getBands, getBookings, getVenues } from "./database.js";
+import { getBands, getBookings, getVenues, getMembers } from "./database.js";
 
 const bands = getBands()
 const venues = getVenues()
 const bookings = getBookings()
+const members = getMembers()
+
+// document.addEventListener(
+//     "click", 
+//     (clickEvent) => {
+//         const itemClicked = clickEvent.target
+//         if(itemClicked.id.startsWith("band")) {
+//             const [, bandPrimaryKey] = itemClicked.id.split("--")
+//             let matchingVenues = ""
+//             for(const band of bands){
+//                 if(parseInt(bandPrimaryKey) === band.id) {
+//                     matchingVenues += `${band.name} will be playing at the following venues \n`
+//                     for (const booking of bookings) {
+//                         if(booking.bandId === band.id){
+//                             for(const venue of venues) {
+//                                 if (venue.id === booking.venueId) {
+//                                     matchingVenues += `${venue.name}\n`
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//             window.alert(`${matchingVenues}`)
+//         }
+//     }
+// )
 
 document.addEventListener(
     "click", 
@@ -29,22 +56,28 @@ document.addEventListener(
         const itemClicked = clickEvent.target
         if(itemClicked.id.startsWith("band")) {
             const [, bandPrimaryKey] = itemClicked.id.split("--")
-            let matchingVenues = ""
-            for(const band of bands){
-                if(parseInt(bandPrimaryKey) === band.id) {
-                    matchingVenues += `${band.name} will be playing at the following venues \n`
+            let bandMessage = ""
+            let matchingVenues = "Upcoming Shows: "
+            for (const band of bands){
+                if(parseInt(bandPrimaryKey) === band.id){
+                    for (const member of members) {
+                        if (member.bandId === band.id) {
+                            bandMessage += `${member.firstName} ${member.lastName} (${member.role}) \n`
+                        }
+                    }
                     for (const booking of bookings) {
                         if(booking.bandId === band.id){
                             for(const venue of venues) {
                                 if (venue.id === booking.venueId) {
-                                    matchingVenues += `${venue.name}\n`
+                                    matchingVenues += `\n${venue.name}`
+                        
                                 }
                             }
                         }
-                    }
+                    }                   
                 }
             }
-            window.alert(`${matchingVenues}`)
+            window.alert(`${bandMessage} ${matchingVenues}`)
         }
     }
 )

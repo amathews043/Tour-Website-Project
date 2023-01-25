@@ -109,7 +109,106 @@ const database = {
         venueId: 2, 
         dateBooked: "January 2nd, 2023",
 
-    },]
+    },],
+    members: [
+        {
+        
+          firstName: "Number one", 
+          lastName: "yes", 
+          id: 1, 
+          yearBorn: 1998, 
+          role: "drummer", 
+          bandId: 1
+        }, 
+        {
+            firstName: "Number two", 
+            lastName: "yes", 
+            id: 2, 
+            yearBorn: 1994, 
+            role: "singer", 
+            bandId: 1
+        },
+        {
+            firstName: "Number three", 
+            lastName: "yes", 
+            id: 3, 
+            yearBorn: 1995, 
+            role: "singer", 
+            bandId: 2
+        },
+        {
+            firstName: "Number four", 
+            lastName: "yes", 
+            id: 4, 
+            yearBorn: 1996, 
+            role: "guitar", 
+            bandId: 2
+        },
+        {
+            firstName: "Number five", 
+            lastName: "yes", 
+            id: 5, 
+            yearBorn: 1982, 
+            role: "singer", 
+            bandId: 3
+        },
+        {
+            firstName: "Number six", 
+            lastName: "yes", 
+            id: 6, 
+            yearBorn: 1987, 
+            role: "harmonica", 
+            bandId: 3
+        },
+        {
+            firstName: "Number seven", 
+            lastName: "yes", 
+            id: 7, 
+            yearBorn: 1989, 
+            role: "singer", 
+            bandId: 4
+        },
+        {
+            firstName: "Number eight", 
+            lastName: "yes", 
+            id: 8, 
+            yearBorn: 1972,  
+            role: "bass", 
+            bandId: 4
+        },
+        {
+            firstName: "Number nine", 
+            lastName: "yes", 
+            id: 9, 
+            yearBorn: 1987, 
+            role: "trumpet", 
+            bandId: 5
+        },
+        {
+            firstName: "Number ten", 
+            lastName: "yes", 
+            id: 10, 
+            yearBorn: 1987, 
+            role: "piano", 
+            bandId: 5
+        },
+        {
+            firstName: "Number eleven", 
+            lastName: "yes", 
+            id: 11, 
+            yearBorn: 2003, 
+            role: "singer", 
+            bandId: 6
+        },
+        {
+            firstName: "Number twelve", 
+            lastName: "yes", 
+            id: 12, 
+            yearBorn: 1952, 
+            role: "strings", 
+            bandId: 6
+        },
+      ], 
 }
 
 export const getBands = () => {
@@ -123,3 +222,7 @@ export const getVenues = () => {
 export const getBookings = () => {
     return database.bookings.map(booking => ({...booking}))
 } 
+
+export const getMembers = () => {
+    return database.members.map(member => ({...member}))
+}
